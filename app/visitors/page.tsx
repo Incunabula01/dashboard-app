@@ -1,11 +1,12 @@
-import React from 'react'
+import VisitorLayout from '../components/Visitors/visitorLayout';
+import VisitorList from '../components/Visitors/visitorList';
 
-export default function Visitors(props) {
-    
-
+export default function Visitors() {
     return (
         <>
-            ZA VISITORUU!
+            <VisitorLayout>
+                <VisitorList/>
+            </VisitorLayout>
         </>
     )
 }

@@ -1,11 +1,12 @@
-import React from 'react'
+import ProductLayout from '../components/Products/productLayout'
+import ProductList from '../components/Products/productList'
 
-export default function Products(props) {
-    
+export default function Products() {
+
 
     return (
-        <>
-            ZA PRODUCTUU!!!
-        </>
+        <ProductLayout>
+            <ProductList />
+        </ProductLayout>
     )
 }
