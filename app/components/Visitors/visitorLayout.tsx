@@ -6,6 +6,7 @@ import Button from '../FormControls/button';
 import { VisitorFormData } from '@/utils/types';
 import { visiorsFormControls } from '@/utils/config';
 import { useRouter } from 'next/navigation';
+import { addVisitor } from '@/app/api/visitor';
 
 type VisitorLayoutProps = {
     children: ReactElement;
@@ -25,18 +26,9 @@ export default function VisitorLayout({ children }: VisitorLayoutProps) {
     const router = useRouter();
 
     const handleOnAdd = async () => {
-        const res = await fetch('/api/visitor/add-visitor', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData)
-        })
-        console.log('res', res);
+        const visitorAdded = await addVisitor(formData);
 
-        const data = await res.json();
-
-        if (data && data.success) {
+        if (visitorAdded) {
             setFormData(initFormData);
             setShowModal(false);
             router.refresh();
@@ -44,8 +36,8 @@ export default function VisitorLayout({ children }: VisitorLayoutProps) {
             setFormData(initFormData);
             setShowModal(false);
         }
-        console.log('data', data);
     };
+    
     return (
         <div>
             <Button label={'Add New Visitor'} onPress={() => setShowModal(true)} />

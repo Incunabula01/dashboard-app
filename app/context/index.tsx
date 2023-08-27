@@ -2,25 +2,39 @@
 
 import { useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
-import { createContext, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, createContext, useEffect, useState } from "react";
 
-const initState = {
-    sidebarOpen: true
+interface AppState {
+    sidebarOpen: boolean;
+    setSidebarOpen: Dispatch<SetStateAction<boolean>>;
+    loader: boolean;
+    setLoader: Dispatch<SetStateAction<boolean>>;
 };
 
-export const GlobalContext = createContext(initState);
+const initState = {
+    sidebarOpen: true,
+    setSidebarOpen: () => {},
+    loader: false,
+    setLoader: () => {}
+}
 
-export default function GlobalState({children}) {
-    const [sidebarOpen, setSidebarOpen] = useState(initState.sidebarOpen);
+export const GlobalContext = createContext<AppState>(initState);
+
+export default function GlobalState({ children }: { children: React.ReactNode }) {
+    const [sidebarOpen, setSidebarOpen] = useState<AppState["sidebarOpen"]>(initState.sidebarOpen);
+    const [loader, setLoader] = useState<AppState["loader"]>(initState.loader);
     const { status } = useSession();
     const pathName = usePathname();
     const router = useRouter();
 
     useEffect(() => {
+        if(status === 'loading') setLoader(true);
+        
         if(status === 'unauthenticated' && (pathName.includes('/' || '/products' || '/visitors'))){
             router.push('/un-auth');
         }
-    }, [status])
+        if (status === 'authenticated' || status === 'unauthenticated') setLoader(false);
+    }, [status, pathName, router]);
 
-    return <GlobalContext.Provider value={{ sidebarOpen, setSidebarOpen } }>{ children }</GlobalContext.Provider>
+    return <GlobalContext.Provider value={{ sidebarOpen, setSidebarOpen, loader, setLoader } }>{ children }</GlobalContext.Provider>
 }

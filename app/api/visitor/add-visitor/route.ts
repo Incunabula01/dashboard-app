@@ -3,8 +3,6 @@ import Visitor from "@/models/visitors";
 
 import { NextResponse } from "next/server";
 
-export const forceDynamic = 'force-dynamic';
-
 export async function POST(req: any) {
     try {
         await connectToDB();

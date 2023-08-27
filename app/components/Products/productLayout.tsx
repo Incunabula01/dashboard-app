@@ -6,6 +6,7 @@ import Button from '../FormControls/button';
 import { ProductFormData } from '@/utils/types';
 import { productFormControls } from '@/utils/config';
 import { useRouter } from 'next/navigation';
+import { addProduct } from '@/app/api/product';
 
 type ProductLayoutProps = {
     children: ReactElement;
@@ -25,18 +26,9 @@ export default function ProductLayout({children}: ProductLayoutProps) {
     const router = useRouter();
 
     const handleOnAdd = async () => {
-        const res = await fetch('/api/product/add-product', {
-            method: 'POST',
-            headers: {
-                'Content-Type' : 'application/json'
-            },
-            body: JSON.stringify(formData)
-        })
-        console.log('res', res);
+        const productAdded = await addProduct(formData);
 
-        const data = await res.json();
-
-        if(data && data.success){
+        if (productAdded){
             setFormData(initFormData);
             setShowModal(false);
             router.refresh();
@@ -44,7 +36,6 @@ export default function ProductLayout({children}: ProductLayoutProps) {
             setFormData(initFormData);
             setShowModal(false);
         }
-        console.log('data', data);
     };
     return (
         <>

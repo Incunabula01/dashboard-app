@@ -30,8 +30,8 @@ const menuItems = [
     }
 ]
 
-export default function DashboardSidebar(props) {
-    const { sidebarOpen, setSidebarOpen } = useContext(GlobalContext);
+export default function DashboardSidebar() {
+    const { sidebarOpen } = useContext(GlobalContext);
     const pathName = usePathname();
     const router = useRouter();
     const { status } = useSession();

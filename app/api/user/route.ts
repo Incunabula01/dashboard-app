@@ -1,8 +1,8 @@
 import { connectToDB } from "@/database";
 import User from "@/models/user";
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 
-export const POST = async (req:type) => {
+export const POST = async (req: NextRequest): Promise<NextResponse> => {
     try {
         await connectToDB();
         const { email, name } = await req.json();

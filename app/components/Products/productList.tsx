@@ -1,15 +1,7 @@
 import { ProductTableData, TableData } from "@/utils/types";
 import Table from "../Table";
 import { productTableHeaders } from "@/utils/config";
-
-async function getAllProducts() {
-    const res = await fetch('http://localhost:3000/api/product/all-products', { method: 'GET', cache: 'no-store' });
-    const resData = await res.json();
-    if(resData.success){
-        return resData.data;
-    }
-    return [];
-}
+import { getAllProducts } from "@/app/api/product";
 
 export default async function ProductList() {
 
