@@ -2,7 +2,8 @@
 import { yearlyAnalyticsChartOptions } from '@/utils/config';
 import { ProductTableData } from '@/utils/types';
 import React from 'react';
-import Chart from 'react-apexcharts';
+// import Chart from 'react-apexcharts';
+import AphexChart from './aphexChart';
 
 type YearlyAnalyticsChartProps = {
     chartData: ProductTableData;
@@ -36,6 +37,19 @@ export default function YearlyAnalyticsChart({ chartData }: YearlyAnalyticsChart
         data: monthArray.map(month => (getValues(chartData, month, 'revenue')))
     }];
 
+    let updateOptions = {
+        ...yearlyAnalyticsChartOptions,
+        chart: {
+            events: {
+                mounted: (chart: { windowResizeHandler: () => void; }) => {
+                    if (typeof window !== 'undefined'){
+                        chart.windowResizeHandler();
+                    }
+                }
+            }
+        }
+    };
+
     return (
         <>
             <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 py-7 shadow sm:px-7.5 xl:col-span-8">
@@ -45,14 +59,15 @@ export default function YearlyAnalyticsChart({ chartData }: YearlyAnalyticsChart
                     </p>
                     <div className="w-full">
                         <div id="YearlyAnalyticsChart" className="-ml-5">
-                            {(typeof window !== 'undefined') &&
-                                <Chart
-                                    options={yearlyAnalyticsChartOptions}
-                                    series={chartSeries}
-                                    type="area"
-                                    height={350}
-                                />
-                            }
+                           
+                            <AphexChart
+                                options={updateOptions}
+                                series={chartSeries}
+                                type="area"
+                                height={350}
+                                width="100%"
+                            />
+                            
                         </div>
                     </div>
                 </div>

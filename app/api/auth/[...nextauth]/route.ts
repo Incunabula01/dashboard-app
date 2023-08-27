@@ -2,13 +2,8 @@ import { connectToDB } from '@/database';
 import User from '@/models/user';
 import GoogleProvider from 'next-auth/providers/google';
 import NextAuth from 'next-auth/next';
-// import { AuthUser, AuthAccount } from '@/utils/types';
 import { AuthOptions } from 'next-auth';
-
-// type SignInOptions = AuthOptions & {
-//     user: AuthUser; 
-//     account: AuthAccount;
-// }
+export const dynamic = 'force-dynamic';
 
 const authOptions: AuthOptions = {
     providers: [
@@ -27,7 +22,7 @@ const authOptions: AuthOptions = {
                     await connectToDB();
                     const userExists = await User.findOne({ email });
                     if (!userExists) {
-                        const res: Response = await fetch('http://localhost:3000/api/user', {
+                        const res: Response = await fetch('http://127.0.0.1:3000/api/user', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'

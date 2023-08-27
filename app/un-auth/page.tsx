@@ -1,8 +1,9 @@
 "use client";
+import { PageProps } from '@/.next/types/app/page';
 import React from 'react'
 import { FaFrownOpen } from 'react-icons/fa';
 
-export default function UnAuth() {
+export default function UnAuth(props: PageProps) {
     
     return (
         <>

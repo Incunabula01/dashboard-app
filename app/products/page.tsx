@@ -1,10 +1,13 @@
+import { PageProps } from '@/.next/types/app/page';
 import ProductLayout from '../components/Products/productLayout';
 import ProductList from '../components/Products/productList';
 
-export default function Products() {
+const Products = (props: PageProps) => {
     return (
         <ProductLayout>
             <ProductList />
         </ProductLayout>
     )
 }
+
+export default Products;

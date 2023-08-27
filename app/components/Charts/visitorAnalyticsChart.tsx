@@ -2,7 +2,8 @@
 import { visitorAnalyticsChartOptions } from '@/utils/config';
 import { VisitorTableData } from '@/utils/types';
 import React from 'react';
-import Chart from 'react-apexcharts';
+// import Chart from 'react-apexcharts';
+import AphexChart from './aphexChart';
 
 type VisitorAnalyticsChartProps = {
     chartData: VisitorTableData;
@@ -33,7 +34,17 @@ export default function VisitorAnalyticsChart({ chartData }: VisitorAnalyticsCha
         ...visitorAnalyticsChartOptions,
         xaxis: {
             categories: uniqueLocation
+        },
+        chart: {
+            events: {
+                mounted: (chart: { windowResizeHandler: () => void; }) => {
+                    if (typeof window !== 'undefined') {
+                        chart.windowResizeHandler();
+                    }
+                }
+            }
         }
+        
     };
 
     return (
@@ -45,11 +56,12 @@ export default function VisitorAnalyticsChart({ chartData }: VisitorAnalyticsCha
                     </p>
                     <div className="w-full">
                         <div id="VisitorAnalyticsChart" className="-ml-5">
-                            <Chart
+                            <AphexChart
                                 options={updatedOptions}
                                 series={chartSeries}
                                 type="area"
                                 height={350}
+                                width="100%"
                             />
                         </div>
                     </div>

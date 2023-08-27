@@ -3,15 +3,15 @@ import React, { Dispatch, SetStateAction } from 'react';
 import Button from '../FormControls/button';
 import Input from '../FormControls/input';
 import Select from '../FormControls/select';
-import { ProductFormData, VisitorFormData, FormControls } from '@/utils/types';
+import {  FormData, FormControls } from '@/utils/types';
 
 type ModalProps = {
     show: boolean;
     title: string;
     formControls: FormControls;
     setShow: Dispatch<SetStateAction<boolean>>;
-    formData: ProductFormData | VisitorFormData;
-    setFormData: Dispatch<SetStateAction<ProductFormData | VisitorFormData>>;
+    formData: FormData;
+    setFormData: Dispatch<SetStateAction<FormData>>;
     onAdd: () => void;
 };
 
@@ -40,6 +40,7 @@ export default function Modal({
                                         ? formControls.map((item) =>
                                             item.componentType === "input" ? (
                                                 <Input
+                                                    key={item.label}
                                                     type={item.type}
                                                     placeholder={item.placeholder}
                                                     label={item.label}
@@ -56,6 +57,7 @@ export default function Modal({
                                                 />
                                             ) : item.componentType === "select" ? (
                                                 <Select
+                                                    key={item.label}
                                                     value={formData && formData[item.id]}
                                                     onOptionChange={(event) =>
                                                         setFormData({

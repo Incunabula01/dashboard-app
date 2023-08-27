@@ -2,7 +2,8 @@
 import React from 'react';
 import { deviceAnalyticsChartOptions } from '@/utils/config';
 import { VisitorTableData } from '@/utils/types';
-import DonutChart from 'react-apexcharts';
+// import DonutChart from 'react-apexcharts';
+import AphexChart from './aphexChart';
 
 const deviceArray = ['Desktop', 'Laptop', 'Tablet', 'Mobile' ];
 
@@ -32,7 +33,7 @@ export default function DeviceAnalyticsChart({ chartData }: DeviceAnalyticsChart
                     </p>
                     <div className="w-full mb-2">
                         <div id="DeviceAnalyticsChart" className="mx-auto flex justify-center">
-                            <DonutChart
+                            <AphexChart
                                 options={deviceAnalyticsChartOptions}
                                 series={chartSeries}
                                 type="donut"

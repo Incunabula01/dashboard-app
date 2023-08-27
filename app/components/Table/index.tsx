@@ -12,8 +12,6 @@ type TableProps = {
 
 export default function Table({ tableData = [], tableHeaderText, tableHeaderCells }: TableProps) {
 
-    console.info('table data', tableData);
-
     return (
         <>
             <div className="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2 5 shadow sm:px-7 5 xl:pb-1 mt-5">

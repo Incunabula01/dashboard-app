@@ -2,12 +2,12 @@ import { VisitorTableData } from "@/utils/types";
 import Table from "../Table";
 import { visitorsTableHeaders } from "@/utils/config";
 import { getAllVisitors } from "@/app/api/visitor";
+import { PageProps } from "@/.next/types/app/visitors/page";
 
 
-export default async function VisitorList() {
+const VisitorList = async (props: PageProps) => {
 
     const visitorData: VisitorTableData = await getAllVisitors();
-    console.info('VisitorData ==>', visitorData);
     return (
         <>
             <Table
@@ -17,3 +17,5 @@ export default async function VisitorList() {
         </>
     )
 }
+
+export default VisitorList;

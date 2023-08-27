@@ -3,7 +3,7 @@
 import React, { useState, ReactElement } from 'react'
 import Modal from '../Modal';
 import Button from '../FormControls/button';
-import { VisitorFormData } from '@/utils/types';
+import { FormData } from '@/utils/types';
 import { visiorsFormControls } from '@/utils/config';
 import { useRouter } from 'next/navigation';
 import { addVisitor } from '@/app/api/visitor';
@@ -12,7 +12,7 @@ type VisitorLayoutProps = {
     children: ReactElement;
 }
 
-const initFormData: VisitorFormData = {
+const initFormData: FormData = {
     visitors: 0,
     location: '',
     device: '',
@@ -20,9 +20,9 @@ const initFormData: VisitorFormData = {
     month: ''
 }
 
-export default function VisitorLayout({ children }: VisitorLayoutProps) {
+const VisitorLayout = ({ children }: VisitorLayoutProps) => {
     const [showModal, setShowModal] = useState<boolean>(false);
-    const [formData, setFormData] = useState<VisitorFormData>(initFormData);
+    const [formData, setFormData] = useState<FormData>(initFormData);
     const router = useRouter();
 
     const handleOnAdd = async () => {
@@ -54,3 +54,5 @@ export default function VisitorLayout({ children }: VisitorLayoutProps) {
         </div>
     )
 }
+
+export default VisitorLayout;

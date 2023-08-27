@@ -1,4 +1,5 @@
-import { VisitorFormData, VisitorTableData } from "@/utils/types";
+import { FormData, VisitorTableData } from "@/utils/types";
+export const dynamic = 'force-dynamic'
 
 export const getAllVisitors = async (): Promise<VisitorTableData | []> => {
     const res = await fetch('http://localhost:3000/api/visitor/all-visitors', { method: 'GET', cache: 'no-store' });
@@ -9,7 +10,7 @@ export const getAllVisitors = async (): Promise<VisitorTableData | []> => {
     return [];
 }
 
-export const addVisitor = async (formData: VisitorFormData): Promise<Boolean> => {
+export const addVisitor = async (formData: FormData): Promise<Boolean> => {
     const res = await fetch('/api/visitor/add-visitor', {
         method: 'POST',
         headers: {

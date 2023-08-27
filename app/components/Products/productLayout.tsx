@@ -3,7 +3,7 @@
 import React, { useState, ReactElement } from 'react'
 import Modal from '../Modal';
 import Button from '../FormControls/button';
-import { ProductFormData } from '@/utils/types';
+import { FormData } from '@/utils/types';
 import { productFormControls } from '@/utils/config';
 import { useRouter } from 'next/navigation';
 import { addProduct } from '@/app/api/product';
@@ -12,17 +12,16 @@ type ProductLayoutProps = {
     children: ReactElement;
 }
 
-const initFormData: ProductFormData = {
+const initFormData: FormData = {
     name: '',
     price: 0,
     visitors: 0,
     sales: 0,
     month: ''
 }
-
-export default function ProductLayout({children}: ProductLayoutProps) {
+const  ProductLayout = ({children}: ProductLayoutProps) => {
     const [showModal, setShowModal] = useState<boolean>(false);
-    const [formData, setFormData] = useState<ProductFormData>(initFormData);
+    const [formData, setFormData] = useState<FormData>(initFormData);
     const router = useRouter();
 
     const handleOnAdd = async () => {
@@ -55,3 +54,5 @@ export default function ProductLayout({children}: ProductLayoutProps) {
         </>
     )
 }
+
+export default ProductLayout;

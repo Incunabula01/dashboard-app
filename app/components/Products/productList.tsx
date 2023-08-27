@@ -2,11 +2,11 @@ import { ProductTableData, TableData } from "@/utils/types";
 import Table from "../Table";
 import { productTableHeaders } from "@/utils/config";
 import { getAllProducts } from "@/app/api/product";
+import { PageProps } from "@/.next/types/app/products/page";
 
-export default async function ProductList() {
+const ProductList=  async (props: PageProps) => {
 
     const productData: ProductTableData = await getAllProducts();
-    console.info('productData ==>', productData);
     return (
         <>
             <Table 
@@ -21,3 +21,5 @@ export default async function ProductList() {
         </>
     )
 }
+
+export default ProductList;
