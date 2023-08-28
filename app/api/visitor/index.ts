@@ -6,6 +6,9 @@ const addVisitorAPIUrl = process.env.ADD_VISITOR_API_URL as RequestInfo | URL;
 
 export const getAllVisitors = async (): Promise<VisitorTableData | []> => {
     const res = await fetch(allVisitorsAPIUrl, { method: 'GET', cache: 'no-store' });
+    if (res.headers.get('content-type') === 'text/html') {
+        return [];
+    }
     const resData = await res.json();
     if (resData.success) {
         return resData.data;

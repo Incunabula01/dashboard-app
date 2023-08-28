@@ -6,6 +6,9 @@ const addProductAPIUrl = process.env.ADD_PRODUCT_API_URL as RequestInfo | URL;
 
 export const getAllProducts = async ():Promise<ProductTableData | []> => {
     const res = await fetch(allProductAPIUrl, { method: 'GET', cache: 'no-store' });
+    if(res.headers.get('content-type') === 'text/html'){
+        return [];
+    }
     const resData = await res.json();
     if (resData.success) {
         return resData.data;
