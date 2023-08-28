@@ -5,14 +5,17 @@ const allVisitorsAPIUrl = process.env.ALL_VISITOR_API_URL as RequestInfo | URL;
 const addVisitorAPIUrl = process.env.ADD_VISITOR_API_URL as RequestInfo | URL;
 
 export const getAllVisitors = async (): Promise<VisitorTableData | []> => {
-    const res = await fetch(allVisitorsAPIUrl, { method: 'GET', cache: 'no-store' });
-    if (res.headers.get('content-type') === 'text/html') {
-        return [];
+    try {
+        const res = await fetch(allVisitorsAPIUrl, { method: 'GET', cache: 'no-store' });
+
+        const resData = await res.json();
+        if (resData.success) {
+            return resData.data;
+        }
+    } catch (error) {
+        console.error('getAllVisitors Error!', error);
     }
-    const resData = await res.json();
-    if (resData.success) {
-        return resData.data;
-    }
+    
     return [];
 }
 
