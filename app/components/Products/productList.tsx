@@ -1,4 +1,4 @@
-import { ProductTableData, TableData } from "@/utils/types";
+import { ProductTableData } from "@/utils/types";
 import Table from "../Table";
 import { productTableHeaders } from "@/utils/config";
 import { getAllProducts } from "@/app/api/product";
