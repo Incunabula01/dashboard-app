@@ -3,13 +3,20 @@ import User from '@/models/user';
 import GoogleProvider from 'next-auth/providers/google';
 import NextAuth from 'next-auth/next';
 import { AuthOptions } from 'next-auth';
+
 export const dynamic = 'force-dynamic';
+
+const clientID: string = process.env.NEXTAUTH_CLIENT_ID ? process.env.NEXTAUTH_CLIENT_ID : '';
+const clientSecret: string = process.env.NEXTAUTH_SECRET ? process.env.NEXTAUTH_SECRET : '';
+const apiUserURL = process.env.API_USER as RequestInfo | URL;
+
+console.log('env vars', clientID, clientSecret, apiUserURL);
 
 const authOptions: AuthOptions = {
     providers: [
         GoogleProvider({
-            clientId: '55094340181-v87dbmi5fgtdo33gfo6nhgll51r4f8e6.apps.googleusercontent.com',
-            clientSecret: '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'
+            clientId: clientID,
+            clientSecret: clientSecret
         })
     ],
     callbacks: {
@@ -22,7 +29,7 @@ const authOptions: AuthOptions = {
                     await connectToDB();
                     const userExists = await User.findOne({ email });
                     if (!userExists) {
-                        const res: Response = await fetch('http://127.0.0.1:3000/api/user', {
+                        const res: Response = await fetch(apiUserURL, {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'

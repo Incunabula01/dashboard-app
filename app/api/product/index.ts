@@ -1,8 +1,11 @@
 import { FormData, ProductTableData } from "@/utils/types";
 export const dynamic = 'force-dynamic';
 
+const allProductAPIUrl = process.env.ALL_PRODUCT_API_URL as RequestInfo | URL;
+const addProductAPIUrl = process.env.ADD_PRODUCT_API_URL as RequestInfo | URL;
+
 export const getAllProducts = async ():Promise<ProductTableData | []> => {
-    const res = await fetch('http://localhost:3000/api/product/all-products', { method: 'GET', cache: 'no-store' });
+    const res = await fetch(allProductAPIUrl, { method: 'GET', cache: 'no-store' });
     const resData = await res.json();
     if (resData.success) {
         return resData.data;
@@ -11,7 +14,7 @@ export const getAllProducts = async ():Promise<ProductTableData | []> => {
 }
 
 export const addProduct = async (formData: FormData): Promise<Boolean> => {
-    const res = await fetch('/api/product/add-product', {
+    const res = await fetch(addProductAPIUrl, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
