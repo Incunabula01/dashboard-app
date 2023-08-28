@@ -2,7 +2,7 @@ import { connectToDB } from "@/database";
 import Visitor from "@/models/visitors";
 import { NextResponse } from "next/server";
 
-const GET = async () => {
+export async function GET() {
     try {
         await connectToDB();
         const getAllVisitors = await Visitor.find({});
@@ -26,5 +26,3 @@ const GET = async () => {
         })
     }
 }
-
-export default GET;

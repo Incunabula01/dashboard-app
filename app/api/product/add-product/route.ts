@@ -3,7 +3,7 @@ import Product from "@/models/product";
 
 import { NextResponse } from "next/server";
 
-const POST = async (req:any) => {
+export async function POST(req:any) {
     try {
         await connectToDB();
         const getData = await req.json();
@@ -29,5 +29,3 @@ const POST = async (req:any) => {
         });
     }
 }
-
-export default POST;

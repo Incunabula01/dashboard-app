@@ -3,7 +3,7 @@ import Visitor from "@/models/visitors";
 
 import { NextResponse } from "next/server";
 
- const POST = async (req: any) => {
+export async function POST(req: any) {
     try {
         await connectToDB();
         const getData = await req.json();
@@ -29,5 +29,3 @@ import { NextResponse } from "next/server";
         });
     }
 }
-
-export default POST;
