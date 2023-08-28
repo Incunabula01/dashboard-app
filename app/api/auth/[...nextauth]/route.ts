@@ -6,8 +6,8 @@ import { AuthOptions } from 'next-auth';
 
 export const dynamic = 'force-dynamic';
 
-const clientID: string = process.env.NEXTAUTH_CLIENT_ID ? process.env.NEXTAUTH_CLIENT_ID : '';
-const clientSecret: string = process.env.NEXTAUTH_SECRET ? process.env.NEXTAUTH_SECRET : '';
+const clientID: string = process.env.GOOGLE_CLIENT_ID ?? '';
+const clientSecret: string = process.env.GOOGLE_CLIENT_SECRET ?? '';
 const apiUserURL = process.env.API_USER as RequestInfo | URL;
 
 console.log('env vars', clientID, clientSecret, apiUserURL);
