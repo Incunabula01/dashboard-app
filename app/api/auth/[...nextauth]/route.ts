@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic';
 
 const clientID: string = process.env.GOOGLE_CLIENT_ID ?? '';
 const clientSecret: string = process.env.GOOGLE_CLIENT_SECRET ?? '';
-const apiUserURL = process.env.API_USER as RequestInfo | URL;
+const apiUserURL = process.env.NEXT_PUBLIC_API_USER as RequestInfo | URL;
 
 console.log('env vars', clientID, clientSecret, apiUserURL);
 

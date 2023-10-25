@@ -29,8 +29,8 @@ export default function Modal({
         <>
             {show ? (
                 <>
-                    <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-                        <div className="relative my-6 mx-auto max-w-3xl w-1/4">
+                    <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-[9000] outline-none focus:outline-none">
+                        <div className="relative my-6 mx-auto max-w-3xl w-full lg:w-1/4">
                             <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none">
                                 <div className="flex items-start justify-between p-5 border-b border-solid rounded-t border-slate-200">
                                     <h3 className="text-3xl font-semibold">{title}</h3>
@@ -79,7 +79,7 @@ export default function Modal({
                             </div>
                         </div>
                     </div>
-                    <div className="opacity-25 fixed inset-0 z-40 bg-black" />
+                    <div className="opacity-25 fixed inset-0 z-[1000] bg-black" />
                 </>
             ) : null}
         </>

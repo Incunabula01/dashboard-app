@@ -9,6 +9,7 @@ import { TbBrandProducthunt } from 'react-icons/tb';
 import { PiUsersFourLight } from 'react-icons/pi';
 import { GlobalContext } from '@/app/context';
 
+
 const menuItems = [
     {
         id: 'dashboard',
@@ -31,20 +32,24 @@ const menuItems = [
 ]
 
 export default function DashboardSidebar() {
-    const { sidebarOpen } = useContext(GlobalContext);
+    const { sidebarOpen, setSidebarOpen } = useContext(GlobalContext);
     const pathName = usePathname();
     const router = useRouter();
     const { status } = useSession();
 
     const handleNav = (pathname: string): void => {
         const menuPath = status === 'unauthenticated' ? '/un-auth' : pathname;
+        setSidebarOpen(false);
         router.push(menuPath);
     };
     return (
         <>
-            <aside className={`absolute left-0 top-0 z-9999 h-screen w-72.5 flex-col overflow-y-hidden bg-black duration-300 ease-linear lg:static ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+            <aside className={`absolute left-0 top-[72px] md:top-0 z-9999 h-screen w-72.5 flex-col overflow-y-hidden bg-black duration-300 ease-linear lg:static -translate-x-full lg:translate-x-0 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
                 <header className="flex justify-between items-center gap-2 px-6 py-5.5 lg:py-6.5">
-                    <Link href={status === 'unauthenticated' ? '/un-auth' : '/'} className="text-[40px] text-white">
+                    <Link 
+                        href={status === 'unauthenticated' ? '/un-auth' : '/'} 
+                        className="text-[40px] text-white"
+                        onClick={() => setSidebarOpen(false)}>
                         Analytics
                     </Link>
                 </header>

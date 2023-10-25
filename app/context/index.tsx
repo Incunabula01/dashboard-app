@@ -12,7 +12,7 @@ interface AppState {
 };
 
 const initState = {
-    sidebarOpen: true,
+    sidebarOpen: false,
     setSidebarOpen: () => {},
     loader: false,
     setLoader: () => {}

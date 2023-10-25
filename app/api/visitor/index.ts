@@ -1,8 +1,8 @@
 import { FormData, VisitorTableData } from "@/utils/types";
 export const dynamic = 'force-dynamic'
 
-const allVisitorsAPIUrl = process.env.ALL_VISITOR_API_URL as RequestInfo | URL;
-const addVisitorAPIUrl = process.env.ADD_VISITOR_API_URL as RequestInfo | URL;
+const allVisitorsAPIUrl = process.env.NEXT_PUBLIC_ALL_VISITOR_API_URL as RequestInfo | URL;
+const addVisitorAPIUrl = process.env.NEXT_PUBLIC_ADD_VISITOR_API_URL as RequestInfo | URL;
 
 export const getAllVisitors = async (): Promise<VisitorTableData | []> => {
     try {

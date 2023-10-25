@@ -14,7 +14,7 @@ export default function Table({ tableData = [], tableHeaderText, tableHeaderCell
 
     return (
         <>
-            <div className="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2 5 shadow sm:px-7 5 xl:pb-1 mt-5">
+            <div className="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2 5 shadow sm:px-7 5 xl:pb-1 mt-5 overflow-x-auto md:overflow-x-hidden">
                 <h4 className="mb-6 text-xl font-semibold text-black">{tableHeaderText}</h4>
                 {tableHeaderCells && tableHeaderCells.length && tableData && tableData.length ?
                     <table className="rounded-sm bg-gray table-auto min-w-full">

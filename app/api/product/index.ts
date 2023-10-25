@@ -1,8 +1,8 @@
 import { FormData, ProductTableData } from "@/utils/types";
 export const dynamic = 'force-dynamic';
 
-const allProductAPIUrl = process.env.ALL_PRODUCT_API_URL as RequestInfo | URL;
-const addProductAPIUrl = process.env.ADD_PRODUCT_API_URL as RequestInfo | URL;
+const allProductAPIUrl = process.env.NEXT_PUBLIC_ALL_PRODUCT_API_URL as RequestInfo | URL;
+const addProductAPIUrl = process.env.NEXT_PUBLIC_ADD_PRODUCT_API_URL as RequestInfo | URL;
 
 export const getAllProducts = async ():Promise<ProductTableData | []> => {
     try {
