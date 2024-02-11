@@ -2,7 +2,7 @@
 import React from 'react';
 import { ProductTableData, VisitorTableData } from '@/utils/types';
 import Card from '../Card';
-import { FaUsers, FaProductHunt, FaDollarSign, FaPeopleGroup } from 'react-icons/fa6';
+import { LuCrown, LuPackage, LuUsers, LuDollarSign } from 'react-icons/lu';
 import YearlyAnalyticsChart from '../Charts/yearlyAnalyticsChart';
 import VisitorsAnalyticsChart from '../Charts/visitorAnalyticsChart';
 import DeviceAnalyticsChart from '../Charts/deviceAnalyticsChart';
@@ -23,25 +23,25 @@ export default function DashboardLayout({ products, visitors }: DashboardLayoutP
                         : 0
                 }
                     label={'Total Premium Visitors'}
-                    icon={<FaUsers size={25} />} />
+                    icon={<LuCrown size={25} />} />
                 <Card
                     data={products && products.length}
                     label={'Total Products'}
-                    icon={<FaProductHunt size={25} />} />
+                    icon={<LuPackage size={25} />} />
                 <Card data={
                     products && products.length ?
                         products.reduce((acc, productItem) => acc + productItem.sales, 0)
                         : 0
                 }
                     label={'Total Sales'}
-                    icon={<FaDollarSign size={25} />} />
+                    icon={<LuDollarSign size={25} />} />
                 <Card data={
                     visitors && visitors.length ?
                         visitors.reduce((acc, visitorItem) => acc + visitorItem.visitors, 0)
                         : 0
                 }
                     label={'Total Visitors'}
-                    icon={<FaPeopleGroup size={25} />} />
+                    icon={<LuUsers size={25} />} />
             </div>
             <div className="mt-44 grid-cols-12 grid gap-4 md:mt-6 md:gap-6 2xl:mt-7 2xl:gap-7">
                 <YearlyAnalyticsChart chartData={
@@ -51,10 +51,10 @@ export default function DashboardLayout({ products, visitors }: DashboardLayoutP
                             revenue: item.price * item.sales - item.sales * 10,
                             cost: item.sales * 10
                         })) : []
-                    } />
+                } />
                 <DeviceAnalyticsChart chartData={visitors} />
-                <VisitorsAnalyticsChart chartData={visitors}/>
-                
+                <VisitorsAnalyticsChart chartData={visitors} />
+
             </div>
         </>
     )

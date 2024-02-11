@@ -1,13 +1,13 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Nunito } from 'next/font/google';
+import { Space_Grotesk } from 'next/font/google';
 import DashboardSidebar from './components/Sidebar';
 import DashboardHeader from './components/Header';
 import GlobalState from './context';
 import NextAuthProvider from './auth-provider';
 import Loader from './components/Loader';
 
-const nunito = Nunito({ subsets: ['latin'] });
+const spaceGrotesk = Space_Grotesk({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Dashboard App',
@@ -21,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={nunito.className}>
+      <body className={spaceGrotesk.className}>
         <NextAuthProvider>
           <GlobalState>
             <div className="flex h-screen overflow-hidden">
@@ -36,7 +36,7 @@ export default function RootLayout({
             </div>
           </GlobalState>
         </NextAuthProvider>
-        
+
       </body>
     </html>
   )

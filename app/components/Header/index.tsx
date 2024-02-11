@@ -2,9 +2,10 @@
 
 import { GlobalContext } from "@/app/context";
 import { signIn, signOut, useSession } from 'next-auth/react';
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect } from "react";
-import { LuAlignJustify } from "react-icons/lu";
+import { LuAlignJustify, LuPlus } from "react-icons/lu";
 
 export default function DashboardHeader() {
     const { sidebarOpen, setSidebarOpen } = useContext(GlobalContext);
@@ -21,13 +22,25 @@ export default function DashboardHeader() {
                 <div className="flex flex-grow items-center gap-2 justify-between md:justify-end p-4 shadow md:px-6 2x1:px-11">
                     <div className="flex items-center gap-2 sm:gap-4 lg:hidden">
                         <button onClick={() => setSidebarOpen(!sidebarOpen)} className="inline-flex item-center justify-center bg-black px-4 py-2 text-large text-white font-medium tracking-wide uppercase">
-                            <LuAlignJustify 
-                                size={24} 
-                                title={sidebarOpen ? 'Hide Sidebar' : 'Show Sidebar'} 
-                                className={`transform transition-transform ${sidebarOpen ? 'rotate-90' : 'rotate-0'}`} 
-                                /> 
+                            {sidebarOpen ?
+                                <LuPlus
+                                    size={24}
+                                    title="Hide Sidebar"
+                                    className="transform  rotate-45"
+                                /> :
+                                <LuAlignJustify
+                                    size={24}
+                                    title="Show Sidebar"
+                                />
+                            }
                         </button>
                     </div>
+                    <Link
+                        href={status === 'unauthenticated' ? '/un-auth' : '/'}
+                        className="md:hidden text-2xl"
+                        onClick={() => setSidebarOpen(false)}>
+                        Dashboard
+                    </Link>
                     <button onClick={() =>
                         status === 'authenticated' ? signOut() : signIn('google')
                     } className="inline-flex item-center justify-center bg-black px-6 py-2 text-large text-white font-medium tracking-wide uppercase">

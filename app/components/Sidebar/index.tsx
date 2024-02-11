@@ -4,9 +4,7 @@ import React, { useContext } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useSession } from "next-auth/react";
-import { LuLayoutDashboard } from 'react-icons/lu';
-import { TbBrandProducthunt } from 'react-icons/tb';
-import { PiUsersFourLight } from 'react-icons/pi';
+import { LuLayoutDashboard, LuPackage, LuUsers } from 'react-icons/lu';
 import { GlobalContext } from '@/app/context';
 
 
@@ -21,13 +19,13 @@ const menuItems = [
         id: 'products',
         label: 'Products',
         path: '/products',
-        icon: <TbBrandProducthunt size={25} />
+        icon: <LuPackage size={25} />
     },
     {
         id: 'visitors',
         label: 'Visitors',
         path: '/visitors',
-        icon: <PiUsersFourLight size={25} />
+        icon: <LuUsers size={25} />
     }
 ]
 
@@ -45,12 +43,12 @@ export default function DashboardSidebar() {
     return (
         <>
             <aside className={`absolute left-0 top-[72px] md:top-0 z-9999 h-screen w-72.5 flex-col overflow-y-hidden bg-black duration-300 ease-linear lg:static -translate-x-full lg:translate-x-0 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
-                <header className="flex justify-between items-center gap-2 px-6 py-5.5 lg:py-6.5">
-                    <Link 
-                        href={status === 'unauthenticated' ? '/un-auth' : '/'} 
+                <header className="hidden justify-between items-center gap-2 px-6 py-5.5 lg:py-6.5 md:flex">
+                    <Link
+                        href={status === 'unauthenticated' ? '/un-auth' : '/'}
                         className="text-[40px] text-white"
                         onClick={() => setSidebarOpen(false)}>
-                        Analytics
+                        Dashboard
                     </Link>
                 </header>
                 <div className="flex flex-col overflow-y-auto duration-300 ease-linear">

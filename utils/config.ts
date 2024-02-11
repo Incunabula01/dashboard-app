@@ -11,7 +11,7 @@ export const productFormControls: FormControls = [
     {
         id: "visitors",
         type: "number",
-        placeholder: "Enter No of visitors",
+        placeholder: "Enter No. of visitors",
         label: "No of visitors",
         componentType: "input",
     },
@@ -25,7 +25,7 @@ export const productFormControls: FormControls = [
     {
         id: "sales",
         type: "number",
-        placeholder: "Enter No of sales",
+        placeholder: "Enter No. of sales",
         label: "No of Sales",
         componentType: "input",
     },
@@ -115,14 +115,14 @@ export const visiorsFormControls: FormControls = [
     {
         id: "visitors",
         type: "number",
-        placeholder: "Enter No of visitors",
+        placeholder: "Enter No. of visitors",
         label: "Visitors",
         componentType: "input",
     },
     {
         id: "premiumUserNumber",
         type: "number",
-        placeholder: "Enter premiumUser no",
+        placeholder: "Enter Premium User Number",
         label: "Premium Users No",
         componentType: "input",
     },
