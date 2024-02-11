@@ -3,7 +3,7 @@ import React, { Dispatch, SetStateAction } from 'react';
 import Button from '../FormControls/button';
 import Input from '../FormControls/input';
 import Select from '../FormControls/select';
-import {  FormData, FormControls } from '@/utils/types';
+import { FormData, FormControls } from '@/utils/types';
 
 type ModalProps = {
     show: boolean;
@@ -24,7 +24,7 @@ export default function Modal({
     formData,
     setFormData
 }: ModalProps) {
-   
+
     return (
         <>
             {show ? (
@@ -35,7 +35,7 @@ export default function Modal({
                                 <div className="flex items-start justify-between p-5 border-b border-solid rounded-t border-slate-200">
                                     <h3 className="text-3xl font-semibold">{title}</h3>
                                 </div>
-                                <div className="relative p-5 flex-auto flex flex-col gap-5">
+                                <div className="relative p-10 flex-auto flex flex-col gap-5">
                                     {formControls && formControls.length
                                         ? formControls.map((item) =>
                                             item.componentType === "input" ? (

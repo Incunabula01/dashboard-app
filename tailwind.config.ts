@@ -9,14 +9,11 @@ const config: Config = {
   ],
   darkMode: 'class',
   theme: {
-    fontFamily: {
-      satoshi: ['Satoshi', 'sans-serif'],
-    },
     colors: {
       current: 'currentColor',
       transparent: 'transparent',
       white: '#FFFFFF',
-      black: '#1C2434',
+      black: '#111e20',
       'black-2': '#010101',
       body: '#64748B',
       bodydark: '#AEB7C0',
