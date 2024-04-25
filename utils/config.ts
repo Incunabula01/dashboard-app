@@ -166,19 +166,19 @@ export const visiorsFormControls: FormControls = [
         componentType: "select",
         options: [
             {
-                id: "jan",
+                id: "january",
                 label: "January",
             },
             {
-                id: "feb",
+                id: "febuary",
                 label: "February",
             },
             {
-                id: "mar",
+                id: "march",
                 label: "March",
             },
             {
-                id: "apr",
+                id: "april",
                 label: "April",
             },
             {
@@ -186,31 +186,31 @@ export const visiorsFormControls: FormControls = [
                 label: "May",
             },
             {
-                id: "jun",
+                id: "june",
                 label: "June",
             },
             {
-                id: "jul",
+                id: "july",
                 label: "July",
             },
             {
-                id: "aug",
+                id: "august",
                 label: "August",
             },
             {
-                id: "sep",
+                id: "sepember",
                 label: "September",
             },
             {
-                id: "oct",
+                id: "october",
                 label: "October",
             },
             {
-                id: "nov",
+                id: "november",
                 label: "November",
             },
             {
-                id: "dec",
+                id: "december",
                 label: "December",
             },
         ],
