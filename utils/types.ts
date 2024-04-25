@@ -4,7 +4,6 @@ interface ProductFormData {
     visitors: number;
     sales: number;
     month: string;
-    dateModified: string;
     [key: string]: any;
 }
 
@@ -19,7 +18,6 @@ interface VisitorFormData {
     device: string;
     premiumUserNumber: number;
     month: string;
-    dateModified: string;
     [key: string]: any;
 }
 
