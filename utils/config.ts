@@ -37,19 +37,19 @@ export const productFormControls: FormControls = [
         componentType: "select",
         options: [
             {
-                id: "jan",
+                id: "january",
                 label: "January",
             },
             {
-                id: "feb",
-                label: "February",
+                id: "feburary",
+                label: "Feburary",
             },
             {
-                id: "mar",
+                id: "march",
                 label: "March",
             },
             {
-                id: "apr",
+                id: "april",
                 label: "April",
             },
             {
@@ -57,31 +57,31 @@ export const productFormControls: FormControls = [
                 label: "May",
             },
             {
-                id: "jun",
+                id: "june",
                 label: "June",
             },
             {
-                id: "jul",
+                id: "july",
                 label: "July",
             },
             {
-                id: "aug",
+                id: "august",
                 label: "August",
             },
             {
-                id: "sep",
+                id: "september",
                 label: "September",
             },
             {
-                id: "oct",
+                id: "october",
                 label: "October",
             },
             {
-                id: "nov",
+                id: "november",
                 label: "November",
             },
             {
-                id: "dec",
+                id: "december",
                 label: "December",
             },
         ],

@@ -6,7 +6,7 @@ const addProductAPIUrl = process.env.NEXT_PUBLIC_ADD_PRODUCT_API_URL as RequestI
 
 export const getAllProducts = async ():Promise<ProductTableData | []> => {
     try {
-        const res = await fetch(allProductAPIUrl, { method: 'GET', cache: 'no-store' });
+        const res = await fetch(allProductAPIUrl, { method: 'GET', cache: 'default' });
 
         const resData = await res.json();
         if (resData.success) {

@@ -99,7 +99,7 @@ export default function Table({ tableData = [], tableHeaderText, tableHeaderCell
                             {
                                 sortedData.map(item => <tr key={item._id} className='bg-white'>{
                                     tableHeaderCells.map(cell => (
-                                        <td key={`${item._id}-${cell.id}`} className='px-6 py-4 whitespace-nowrap'>{item[cell.id]}</td>
+                                        <td key={`${item._id}-${cell.id}`} className='px-6 py-4 whitespace-nowrap capitalize'>{item[cell.id]}</td>
                                     ))
                                 }</tr>)
                             }
