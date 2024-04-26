@@ -50,7 +50,7 @@ export default function Table({ tableData = [], tableHeaderText, tableHeaderCell
             // Todo: sort by createdDate
             setSortBy(Object.keys(tableData[0])[1]);
         }
-    }, []);
+    }, [tableData]);
 
     const sortedData = [...tableData].sort((a, b) => {
         if (!sortBy) return 0;
