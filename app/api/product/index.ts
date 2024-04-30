@@ -6,7 +6,7 @@ const addProductAPIUrl = process.env.NEXT_PUBLIC_ADD_PRODUCT_API_URL as RequestI
 
 export const getAllProducts = async ():Promise<ProductTableData | []> => {
     try {
-        const res = await fetch(allProductAPIUrl, { method: 'GET', cache: 'no-store' });
+        const res = await fetch(allProductAPIUrl, { method: 'GET', cache: 'default' });
 
         const resData = await res.json();
         if (resData.success) {
@@ -24,7 +24,10 @@ export const addProduct = async (formData: FormData): Promise<Boolean> => {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({
+            ...formData, 
+            createdDate: new Date()
+        })
     });
 
     const data = await res.json();

@@ -6,7 +6,7 @@ const addVisitorAPIUrl = process.env.NEXT_PUBLIC_ADD_VISITOR_API_URL as RequestI
 
 export const getAllVisitors = async (): Promise<VisitorTableData | []> => {
     try {
-        const res = await fetch(allVisitorsAPIUrl, { method: 'GET', cache: 'no-store' });
+        const res = await fetch(allVisitorsAPIUrl, { method: 'GET', cache: 'default' });
 
         const resData = await res.json();
         if (resData.success) {
@@ -25,7 +25,10 @@ export const addVisitor = async (formData: FormData): Promise<Boolean> => {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({
+             ...formData, 
+            createdDate: new Date()
+        })
     });
 
     const data = await res.json();
