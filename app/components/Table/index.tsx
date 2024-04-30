@@ -47,15 +47,23 @@ export default function Table({ tableData = [], tableHeaderText, tableHeaderCell
     useEffect(() => {
         if (tableData) {
             // Sort table by first column value
-            // Todo: sort by createdDate
-            setSortBy(Object.keys(tableData[0])[1]);
+            setSortBy(Object.keys(tableData[0]).indexOf('createdDate') !== -1 ? 'createdDate' : 'name');
         }
     }, [tableData]);
 
     const sortedData = [...tableData].sort((a, b) => {
         if (!sortBy) return 0;
-        const aValue = a[sortBy];
-        const bValue = b[sortBy];
+        let aValue: string | number = a[sortBy];
+        let bValue: string | number = b[sortBy];
+
+        if (sortBy === 'createdDate') {
+            aValue = new Date(a[sortBy]).getTime();
+            bValue = new Date(b[sortBy]).getTime();
+            if (aValue === bValue) return 0;
+            if (sortDirection === 'asc') return aValue > bValue ? 1 : -1;
+            return aValue < bValue ? 1 : -1;
+        }
+
         if (aValue === bValue) return 0;
         if (sortDirection === 'asc') return aValue > bValue ? 1 : -1;
         return aValue < bValue ? 1 : -1;

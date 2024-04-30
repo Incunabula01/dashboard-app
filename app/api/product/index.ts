@@ -24,7 +24,10 @@ export const addProduct = async (formData: FormData): Promise<Boolean> => {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({
+            ...formData, 
+            createdDate: new Date()
+        })
     });
 
     const data = await res.json();
